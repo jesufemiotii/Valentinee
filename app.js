@@ -39,7 +39,7 @@ const CONFIG = {
     //   python -m http.server 8000
     //   or VS Code "Live Server" extension
     // -------------------------------------------------------
-    SONG_URL: "https://www.reverbnation.com/marindalcrew4/song/21570198-thousand-years-cristina-perrimp3",
+    SONG_URL: "https://drive.google.com/file/d/1Dvt6twTnUQVv9Z46EeghQ9Y5yipiRjpo/view?usp=drive_link",
 
     // Video URL (YouTube embed URL or local file)
     // YouTube: "https://www.youtube.com/embed/dQw4w9WgXcQ"
