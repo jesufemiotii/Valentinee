@@ -39,7 +39,7 @@ const CONFIG = {
     //   python -m http.server 8000
     //   or VS Code "Live Server" extension
     // -------------------------------------------------------
-    SONG_URL: "file:///Users/online-sales-group/Documents/Valentine/mp3/Christina Perri-A Thousand Years.mp3",
+    SONG_URL: "Christina Perri-A Thousand Years.mp3",
 
     // Video URL (YouTube embed URL or local file)
     // YouTube: "https://www.youtube.com/embed/dQw4w9WgXcQ"
