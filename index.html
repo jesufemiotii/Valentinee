@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💕 A Special Question For You</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <meta name="description" content="A special Valentine's proposal just for you 💕">
+    <meta name="theme-color" content="#e8457c">
+</head>
+<body>
+    <!-- Animated Background Canvas -->
+    <canvas id="hearts-bg" aria-hidden="true"></canvas>
+
+    <!-- Bokeh Background Overlay -->
+    <div class="bokeh-overlay" aria-hidden="true">
+        <div class="bokeh-circle bokeh-1"></div>
+        <div class="bokeh-circle bokeh-2"></div>
+        <div class="bokeh-circle bokeh-3"></div>
+        <div class="bokeh-circle bokeh-4"></div>
+        <div class="bokeh-circle bokeh-5"></div>
+        <div class="bokeh-circle bokeh-6"></div>
+        <div class="bokeh-circle bokeh-7"></div>
+        <div class="bokeh-circle bokeh-8"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="top-nav" id="main-nav" role="navigation" aria-label="Main navigation">
+        <div class="nav-inner">
+            <span class="nav-logo" aria-hidden="true">💕</span>
+            <ul class="nav-links">
+                <li><a href="#proposal" class="nav-link active" data-page="proposal" aria-label="Go to Proposal page">Proposal</a></li>
+                <li><a href="#celebration" class="nav-link" data-page="celebration" aria-label="Go to Celebration page">Celebration</a></li>
+                <li><a href="#video" class="nav-link" data-page="video" aria-label="Go to Video page">Video</a></li>
+                <li><a href="#checklist" class="nav-link" data-page="checklist" aria-label="Go to Checklist page">Plan</a></li>
+            </ul>
+            <!-- Music Toggle -->
+            <button class="music-toggle" id="music-toggle" aria-label="Toggle background music" title="Toggle music">
+                <span class="music-icon" id="music-icon">🔇</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Bottom Navigation -->
+    <nav class="bottom-nav" id="mobile-nav" role="navigation" aria-label="Mobile navigation">
+        <a href="#proposal" class="bottom-nav-item active" data-page="proposal" aria-label="Proposal page">
+            <span class="bottom-nav-icon">💌</span>
+            <span class="bottom-nav-label">Proposal</span>
+        </a>
+        <a href="#celebration" class="bottom-nav-item" data-page="celebration" aria-label="Celebration page">
+            <span class="bottom-nav-icon">🎉</span>
+            <span class="bottom-nav-label">Celebrate</span>
+        </a>
+        <a href="#video" class="bottom-nav-item" data-page="video" aria-label="Video page">
+            <span class="bottom-nav-icon">🎬</span>
+            <span class="bottom-nav-label">Video</span>
+        </a>
+        <a href="#checklist" class="bottom-nav-item" data-page="checklist" aria-label="Checklist page">
+            <span class="bottom-nav-icon">📝</span>
+            <span class="bottom-nav-label">Plan</span>
+        </a>
+    </nav>
+
+    <!--
+    ==============================================
+    AUDIO ELEMENT — Fixed for proper loading
+    The src is set dynamically by app.js from CONFIG
+    ==============================================
+    -->
+    <audio id="bg-music" loop preload="auto"></audio>
+
+    <!--
+    ==============================================
+    OPTIONAL: Local file picker for music
+    If you want to let the user pick a song file
+    directly from their device, uncomment below:
+    ==============================================
+    -->
+    <!--
+    <div class="file-picker-overlay" id="file-picker-overlay">
+        <div class="file-picker-modal">
+            <h3>🎵 Pick a song</h3>
+            <input type="file" id="song-file-input" accept="audio/*">
+            <button onclick="loadSongFromFile()">Load</button>
+        </div>
+    </div>
+    -->
+
+    <!-- ============================================================ -->
+    <!--                    PAGE 1: PROPOSAL                          -->
+    <!-- ============================================================ -->
+    <main>
+        <section class="page active" id="page-proposal" role="main" aria-label="Valentine's Proposal">
+            <div class="page-content proposal-page">
+                <!-- Floating decorative hearts -->
+                <div class="deco-hearts" aria-hidden="true">
+                    <span class="deco-heart dh-1">♥</span>
+                    <span class="deco-heart dh-2">♥</span>
+                    <span class="deco-heart dh-3">💕</span>
+                    <span class="deco-heart dh-4">♥</span>
+                </div>
+
+                <div class="proposal-hero">
+                    <div class="proposal-envelope" aria-hidden="true">
+                        <div class="envelope-body">
+                            <div class="envelope-heart">💌</div>
+                        </div>
+                    </div>
+
+                    <h1 class="proposal-headline fade-in-up">
+                        Hey <span class="highlight-name" id="partner-name-1">My Love</span>,<br>
+                        will you be my Valentine?
+                    </h1>
+
+                    <p class="proposal-message fade-in-up delay-1">
+                        Every moment with you feels like a beautiful dream I never want to wake up from.
+                        You make my world brighter, warmer, and so much more wonderful. I can't imagine
+                        spending this Valentine's Day with anyone else. So here I am, asking you with
+                        all my heart… 💕
+                    </p>
+
+                    <!-- Optional Photo Strip -->
+                    <div class="photo-strip fade-in-up delay-2">
+                        <div class="polaroid" id="polaroid-1">
+                            <div class="polaroid-img-wrapper">
+                                <img src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=300&h=300&fit=crop"
+                                     alt="Our memory together"
+                                     class="polaroid-img"
+                                     loading="lazy">
+                            </div>
+                            <span class="polaroid-caption">Us 💕</span>
+                        </div>
+                        <div class="polaroid" id="polaroid-2">
+                            <div class="polaroid-img-wrapper">
+                                <img src="https://images.unsplash.com/photo-1529519195486-b6e7fcb6c9c2?w=300&h=300&fit=crop"
+                                     alt="Another beautiful memory"
+                                     class="polaroid-img"
+                                     loading="lazy">
+                            </div>
+                            <span class="polaroid-caption">Always 🥰</span>
+                        </div>
+                        <div class="polaroid" id="polaroid-3">
+                            <div class="polaroid-img-wrapper">
+                                <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=300&h=300&fit=crop"
+                                     alt="A special moment"
+                                     class="polaroid-img"
+                                     loading="lazy">
+                            </div>
+                            <span class="polaroid-caption">Forever 💖</span>
+                        </div>
+                    </div>
+
+                    <!-- Proposal Buttons -->
+                    <div class="proposal-buttons fade-in-up delay-3">
+                        <button class="btn btn-yes pulse-glow" id="btn-yes" aria-label="Yes, I'll be your Valentine!">
+                            <span class="btn-icon">💖</span>
+                            Yes!
+                        </button>
+                        <button class="btn btn-no" id="btn-no" aria-label="Not yet">
+                            <span class="btn-icon">🤔</span>
+                            <span id="no-text">Not yet...</span>
+                        </button>
+                    </div>
+
+                    <p class="proposal-date fade-in-up delay-4">
+                        <span class="date-label">📅</span>
+                        <span id="valentine-date">February 14, 2025</span>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!--                  PAGE 2: CELEBRATION                         -->
+        <!-- ============================================================ -->
+        <section class="page" id="page-celebration" role="main" aria-label="Celebration">
+            <div class="page-content celebration-page">
+                <canvas id="confetti-canvas" aria-hidden="true"></canvas>
+
+                <div class="celebration-content">
+                    <div class="celebration-emoji bounce-in" aria-hidden="true">🎉</div>
+
+                    <h1 class="celebration-headline fade-in-up">
+                        Yay!! You said <span class="yes-text sparkle">YES!</span>
+                    </h1>
+
+                    <div class="celebration-hearts-burst" aria-hidden="true">
+                        <span class="burst-heart bh-1">💕</span>
+                        <span class="burst-heart bh-2">💖</span>
+                        <span class="burst-heart bh-3">💗</span>
+                        <span class="burst-heart bh-4">❤️</span>
+                        <span class="burst-heart bh-5">💘</span>
+                        <span class="burst-heart bh-6">💝</span>
+                    </div>
+
+                    <p class="celebration-sub fade-in-up delay-1">
+                        Happy Valentine's, <strong id="partner-name-2">My Love</strong> —
+                        with all my love, <strong id="your-name-1">Your Valentine</strong> 💕
+                    </p>
+
+                    <div class="celebration-message fade-in-up delay-2">
+                        <p>You just made me the happiest person in the world!
+                        I have a couple of surprises waiting for you…</p>
+                    </div>
+
+                    <div class="celebration-buttons fade-in-up delay-3">
+                        <button class="btn btn-primary" id="btn-to-video" aria-label="Watch a video I made for you">
+                            <span class="btn-icon">🎬</span>
+                            Watch something I made for you
+                        </button>
+                        <button class="btn btn-secondary" id="btn-to-checklist-from-celebration" aria-label="Plan our Valentine's date">
+                            <span class="btn-icon">📝</span>
+                            Plan our Valentine's date
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!--                   PAGE 3: VIDEO                              -->
+        <!-- ============================================================ -->
+        <section class="page" id="page-video" role="main" aria-label="Personal Video">
+            <div class="page-content video-page">
+                <div class="video-content">
+                    <h1 class="video-headline fade-in-up">
+                        A little video for you, <span class="highlight-name" id="partner-name-3">My Love</span> 🎬
+                    </h1>
+
+                    <p class="video-intro fade-in-up delay-1">
+                        I put this together because you mean the world to me.
+                        Press play and know that every second represents how much I care about you. 💕
+                    </p>
+
+                    <div class="video-wrapper fade-in-up delay-2">
+                        <video
+                            controls
+                            class="video-player"
+                            id="main-video"
+                            poster="https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=800&h=450&fit=crop"
+                            preload="metadata"
+                            aria-label="Personal video message for you">
+                            <p>Your browser doesn't support HTML5 video.</p>
+                        </video>
+
+                        <div class="video-placeholder" id="video-placeholder">
+                            <div class="placeholder-icon">🎥</div>
+                            <p>Your personal video will appear here!</p>
+                            <p class="placeholder-hint">Edit CONFIG.VIDEO_URL in app.js</p>
+                        </div>
+                    </div>
+
+                    <div class="video-caption fade-in-up delay-3">
+                        <p class="caption-text">
+                            "In all the world, there is no heart for me like yours.
+                            In all the world, there is no love for you like mine." 💕
+                        </p>
+                    </div>
+
+                    <div class="video-buttons fade-in-up delay-3">
+                        <button class="btn btn-primary" id="btn-to-checklist" aria-label="See our Valentine's plan">
+                            <span class="btn-icon">📝</span>
+                            Next: Our Valentine's Plan
+                        </button>
+                        <button class="btn btn-ghost" id="btn-back-celebration" aria-label="Go back to celebration">
+                            <span class="btn-icon">←</span>
+                            Back to celebration
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!--                 PAGE 4: CHECKLIST                            -->
+        <!-- ============================================================ -->
+        <section class="page" id="page-checklist" role="main" aria-label="Valentine's Day Checklist">
+            <div class="page-content checklist-page">
+                <div class="checklist-content">
+                    <h1 class="checklist-headline fade-in-up">
+                        Choose what we should do<br> for Valentine's 💕
+                    </h1>
+
+                    <p class="checklist-sub fade-in-up delay-1">
+                        Pick everything that sounds fun! We'll make it the best day ever. 🥰
+                    </p>
+
+                    <div class="selected-counter fade-in-up delay-1" id="selected-counter" aria-live="polite">
+                        <span class="counter-icon">✨</span>
+                        <span id="counter-text">0 ideas selected</span>
+                    </div>
+
+                    <div class="checklist-grid fade-in-up delay-2" id="checklist-grid" role="group" aria-label="Valentine's activity options">
+
+                        <label class="checklist-item" data-item="dinner">
+                            <input type="checkbox" class="checklist-checkbox" value="dinner" aria-label="Dinner date">
+                            <div class="checklist-card">
+                                <span class="checklist-icon">🍽️</span>
+                                <span class="checklist-label">Dinner date</span>
+                                <span class="checklist-desc">Home-cooked or restaurant</span>
+                                <span class="checklist-check" aria-hidden="true">✓</span>
+                            </div>
+                        </label>
+
+                        <label class="checklist-item" data-item="movie">
+                            <input type="checkbox" class="checklist-checkbox" value="movie" aria-label="Movie night + popcorn">
+                            <div class="checklist-card">
+                                <span class="checklist-icon">🎬</span>
+                                <span class="checklist-label">Movie night</span>
+                                <span class="checklist-desc">+ lots of popcorn 🍿</span>
+                                <span class="checklist-check" aria-hidden="true">✓</span>
+                            </div>
+                        </label>
+
+                        <label class="checklist-item" data-item="picnic">
+                            <input type="checkbox" class="checklist-checkbox" value="picnic" aria-label="Picnic together">
+                            <div class="checklist-card">
+                                <span class="checklist-icon">🧺</span>
+                                <span class="checklist-label">Picnic</span>
+                                <span class="checklist-desc">If weather allows 🌤️</span>
+                                <span class="checklist-check" aria-hidden="true">✓</span>
+                            </div>
+                        </label>
+
+                        <label class="checklist-item" data-item="baking">
+                            <input type="checkbox" class="checklist-checkbox" value="baking" aria-label="Bake cookies together">
+                            <div class="checklist-card">
+                                <span class="checklist-icon">🍪</span>
+                                <span class="checklist-label">Bake cookies</span>
+                                <span class="checklist-desc">Together in the kitchen</span>
+                                <span class="checklist-check" aria-hidden="true">✓</span>
+                            </div>
+                        </label>
+
+                        <label class="checklist-item" data-item="sunset-walk">
+                            <input type="checkbox" class="checklist-checkbox" value="sunset-walk" aria-label="Go for a sunset walk">
+                            <div class="checklist-card">
+                                <span class="checklist-icon">🌅</span>
+                                <span class="checklist-label">Sunset walk</span>
+                                <span class="checklist-desc">Hand in hand</span>
+                                <span class="checklist-check" aria-hidden="true">✓</span>
+                            </div>
+                        </label>
+
+                        <label class="checklist-item" data-item="coffee-crawl">
+                            <input type="checkbox" class="checklist-checkbox" value="coffee-crawl" aria-label="Coffee and dessert crawl">
+                            <div class="checklist-card">
+                                <span class="checklist-icon">☕</span>
+                                <span class="checklist-label">Coffee + dessert crawl</span>
+                                <span class="checklist-desc">Café hopping! 🧁</span>
+                                <span class="checklist-check" aria-hidden="true">✓</span>
+                            </div>
+                        </label>
+
+                        <label class="checklist-item" data-item="game-night">
+                            <input type="checkbox" class="checklist-checkbox" value="game-night" aria-label="Game night">
+                            <div class="checklist-card">
+                                <span class="checklist-icon">🎮</span>
+                                <span class="checklist-label">Game night</span>
+                                <span class="checklist-desc">Board games or video games</span>
+                                <span class="checklist-check" aria-hidden="true">✓</span>
+                            </div>
+                        </label>
+
+                        <label class="checklist-item" data-item="love-letters">
+                            <input type="checkbox" class="checklist-checkbox" value="love-letters" aria-label="Write love letters to each other">
+                            <div class="checklist-card">
+                                <span class="checklist-icon">💌</span>
+                                <span class="checklist-label">Love letters</span>
+                                <span class="checklist-desc">Write to each other</span>
+                                <span class="checklist-check" aria-hidden="true">✓</span>
+                            </div>
+                        </label>
+
+                        <label class="checklist-item" data-item="photoshoot">
+                            <input type="checkbox" class="checklist-checkbox" value="photoshoot" aria-label="Mini photoshoot together">
+                            <div class="checklist-card">
+                                <span class="checklist-icon">📸</span>
+                                <span class="checklist-label">Photos together</span>
+                                <span class="checklist-desc">Mini photoshoot 🤳</span>
+                                <span class="checklist-check" aria-hidden="true">✓</span>
+                            </div>
+                        </label>
+
+                        <label class="checklist-item" data-item="gift-exchange">
+                            <input type="checkbox" class="checklist-checkbox" value="gift-exchange" aria-label="Surprise gift exchange">
+                            <div class="checklist-card">
+                                <span class="checklist-icon">🎁</span>
+                                <span class="checklist-label">Gift exchange</span>
+                                <span class="checklist-desc">Surprise each other!</span>
+                                <span class="checklist-check" aria-hidden="true">✓</span>
+                            </div>
+                        </label>
+
+                        <div id="custom-items-container"></div>
+                    </div>
+
+                    <div class="add-idea-section fade-in-up delay-3">
+                        <h3 class="add-idea-title">Have another idea? 💡</h3>
+                        <div class="add-idea-form">
+                            <input
+                                type="text"
+                                class="add-idea-input"
+                                id="custom-idea-input"
+                                placeholder="Your fun idea..."
+                                aria-label="Add your own Valentine's activity idea"
+                                maxlength="60">
+                            <button class="btn btn-add" id="btn-add-idea" aria-label="Add custom idea">
+                                <span>+ Add</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="checklist-actions fade-in-up delay-3">
+                        <button class="btn btn-primary" id="btn-save-plan" aria-label="Save our Valentine's plan">
+                            <span class="btn-icon">💾</span>
+                            Save our plan
+                        </button>
+                        <button class="btn btn-secondary" id="btn-download-plan" aria-label="Download plan as text file">
+                            <span class="btn-icon">📄</span>
+                            Download plan
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast" role="alert" aria-live="assertive" aria-atomic="true">
+        <span class="toast-icon" id="toast-icon">💕</span>
+        <span class="toast-message" id="toast-message">Plan saved!</span>
+    </div>
+
+    <!-- Confirmation Modal -->
+    <div class="modal-overlay" id="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <div class="modal">
+            <div class="modal-icon">💖</div>
+            <h2 class="modal-title" id="modal-title">Plan Saved!</h2>
+            <p class="modal-text" id="modal-text">Your Valentine's plan has been saved.</p>
+            <button class="btn btn-primary modal-close" id="modal-close" aria-label="Close modal">
+                Yay! Can't wait! 🎉
+            </button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
