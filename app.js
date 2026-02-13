@@ -14,7 +14,6 @@ const CONFIG = {
 
     // Valentine's date text
     VALENTINES_DATE: "February 14, 2026",
-    
 
     // -------------------------------------------------------
     // 🎵 SONG URL — THIS IS THE FIX
@@ -40,7 +39,7 @@ const CONFIG = {
     //   python -m http.server 8000
     //   or VS Code "Live Server" extension
     // -------------------------------------------------------
-    SONG_URL: "Christina Perri-A Thousand Years.mp3",
+    SONG_URL: "file:///Users/online-sales-group/Documents/Valentine/mp3/Christina Perri-A Thousand Years.mp3",
 
     // Video URL (YouTube embed URL or local file)
     // YouTube: "https://www.youtube.com/embed/dQw4w9WgXcQ"
@@ -252,7 +251,11 @@ function initAudio() {
         };
         const msg = errorMessages[errorCode] || "Unknown audio error";
         console.error(`🎵 Audio Error (code ${errorCode}): ${msg}`);
-        console.error("🎵 Attempted URL:"yes", CONFIG.SONG_URL);
+        console.error("🎵 Attempted URL:", CONFIG.SONG_URL);
+        console.error("🎵 TIP: If opening as file://, use a local server instead:");
+        console.error("   npx serve .");
+        console.error("   python3 -m http.server 8000");
+        console.error("   VS Code Live Server extension");
     });
 
     // ---- Music Toggle Button ----
