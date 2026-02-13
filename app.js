@@ -253,10 +253,6 @@ function initAudio() {
         const msg = errorMessages[errorCode] || "Unknown audio error";
         console.error(`🎵 Audio Error (code ${errorCode}): ${msg}`);
         console.error("🎵 Attempted URL:", CONFIG.SONG_URL);
-        console.error("🎵 TIP: If opening as file://, use a local server instead:");
-        console.error("   npx serve .");
-        console.error("   python3 -m http.server 8000");
-        console.error("   VS Code Live Server extension");
     });
 
     // ---- Music Toggle Button ----
