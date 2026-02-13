@@ -252,7 +252,7 @@ function initAudio() {
         };
         const msg = errorMessages[errorCode] || "Unknown audio error";
         console.error(`🎵 Audio Error (code ${errorCode}): ${msg}`);
-        console.error("🎵 Attempted URL:", CONFIG.SONG_URL);
+        console.error("🎵 Attempted URL:"yes", CONFIG.SONG_URL);
     });
 
     // ---- Music Toggle Button ----
