@@ -14,6 +14,15 @@ const CONFIG = {
 
     // Valentine's date text
     VALENTINES_DATE: "February 14, 2026",
+     <!--
+    <div class="file-picker-overlay" id="file-picker-overlay">
+        <div class="file-picker-modal">
+            <h3>🎵 Pick a song</h3>
+            <input type="file" id="song-file-input" accept="audio/*">
+            <button onclick="loadSongFromgoogledrive()">Load</button>
+        </div>
+    </div>
+    -->
 
     // -------------------------------------------------------
     // 🎵 SONG URL — THIS IS THE FIX
